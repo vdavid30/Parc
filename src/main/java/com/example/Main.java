@@ -54,10 +54,11 @@ public class Main {
     return "index";
   }
   @RequestMapping("/cuadrado?valor={value}")
-  String cuadrado(int value) {
+  String cuadrado(Map<String, Object> model, int value) {
     String valueS;
     valueS = "";
     valueS = "{valor:"+value+", cuadrado:"+value*value+"}";
+    model.put("records", valueS);
     return valueS;
   }
   

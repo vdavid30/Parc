@@ -33,6 +33,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.Map;
+import static org.postgresql.core.Oid.JSON;
 
 @Controller
 @SpringBootApplication
@@ -52,7 +53,16 @@ public class Main {
   String index() {
     return "index";
   }
-
+  @RequestMapping("/cuadrado?valor={value}")
+  String cuadrado(int value) {
+    String valueS;
+    valueS = "";
+    valueS = "{valor:"+value+", cuadrado:"+value*value+"}";
+    return valueS;
+  }
+  
+  
+  
   @RequestMapping("/db")
   String db(Map<String, Object> model) {
     try (Connection connection = dataSource.getConnection()) {
